@@ -1,6 +1,6 @@
 <script lang="ts">
     import {onMount} from "svelte";
-    import {initWasm} from "../lib/wasm/btc-address.wasm";
+    import initWasm from "../lib/wasm/btc-address.wasm";
     import { AnonymousIdentity } from "@dfinity/agent";
 
     onMount(async () => {

@@ -48,9 +48,7 @@ function initMemory(imports, maybe_memory) {
 function finalizeInit(instance, module) {
     wasm = instance.exports;
 
-    // TODO: commented. Is that the root cause of the problem?
-    // init.__wbindgen_wasm_module = module;
-
+    initWasm.__wbindgen_wasm_module = module;
 
     return wasm;
 }
@@ -69,7 +67,7 @@ function initSync(module) {
     return finalizeInit(instance, module);
 }
 
-export const initWasm = async (input) => {
+const initWasm = async (input) => {
     if (typeof input === 'undefined') {
         input = new URL('ic_btc_address_bg.wasm', import.meta.url);
     }
@@ -88,3 +86,4 @@ export const initWasm = async (input) => {
     return finalizeInit(instance, module);
 }
 
+export default initWasm;
